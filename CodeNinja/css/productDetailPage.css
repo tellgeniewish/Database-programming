@@ -1,0 +1,86 @@
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+@supports (font-variation-settings: normal) {
+    :root {
+      font-family: InterVariable, sans-serif;
+    }
+}
+body {
+    width:100%;
+    height: 911px;
+    /* 
+    margin:auto;
+    */
+}
+.container {
+    display: flex;
+    justify-content:center;
+    padding-top: 80px;
+}
+.meal_img {
+    width: 495px;
+    height: 496px;
+}
+#product_name, .rating, price {
+    font-size: larger;
+}
+#product_price, span {
+    font-weight: bold;
+}
+.quantity {
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    padding: 10px;
+    width: 542px;
+    height:142px;
+}
+.check_quantity {
+    display: flex;
+    justify-content: space-between;
+}
+.plusOrMinus {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+#how_much {
+    font-size: large;
+}
+.buy_yet {
+    display: flex;
+    justify-content: space-evenly;
+}
+.total_price {
+    display: flex;
+    justify-content: space-between;
+}
+.maybe_price {
+    width: 110px;
+    height: 20px;
+    font-size:medium;
+}
+.total_price {
+    text-align:end;
+    font-size:x-large;
+}
+.add_cart, .buy_now {
+    width:257px;
+    height: 52.76px;
+    background-color: #BFB6A9;
+    color: white;
+    text-align: center;
+    font-size: large;
+
+    border-radius: 10px;
+    border: none;
+}
+hr {
+    margin: 20px 10px;
+}
+iframe {
+    width:100%;
+    height: 100vh;
+    border: none;
+}

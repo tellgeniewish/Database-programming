@@ -1,0 +1,122 @@
+SCOTT 계정의 emp, dept, salgrade 테이블을 이용하여 다음 문제에 대한 SQL 질의를 작성하시오.
+
+ 
+다음 수업시간까지 위 1~5번 질의를 작성 및 실행해 보기 바랍니다. (SQL developer나 sqlplus 사용)
+ 
+
+1. 20번 부서나 30번 부서에 속하고 이름에 ‘AR’이 포함된 사원들의 이름과 부서번호, 업무(job)를 구하시오. (LIKE 연산자, OR 또는 IN 이용; AND와 OR의 우선순위 주의)
+
+SELECT ename, deptno, job
+
+FROM emp
+
+WHERE (deptno=30 OR deptno=20) AND ename LIKE '%AR%';
+
+ 
+
+2. RESEARCH 부서에서 일하는 사원들 중 급여가 2,000이하인 사원들의 수를 구하시오.
+
+(a) join을 이용하는 질의
+
+SELECT COUNT(e.empno)
+
+FROM emp e JOIN dept d ON e.deptno = d.deptno
+
+WHERE d.dname = 'RESEARCH' AND e.sal <= 2000;
+
+또는
+
+SELECT COUNT(e.empno)
+
+FROM emp e, dept d 
+
+WHERE e.deptno = d.deptno
+
+     AND d.dname = 'RESEARCH' AND e.sal <= 2000;
+
+(b) subquery를 이용하는 질의
+
+ SELECT COUNT(empno)
+
+FROM emp
+
+WHERE sal <= 2000
+
+     AND deptno IN (SELECT deptno FROM dept WHERE dname = 'RESEARCH');
+
+
+
+3. 급여 등급(salgrade)이 3등급 이하이고 수당(comm)이 1000이하인 사원들의 이름과 급여, 수당을 구하고 “연봉”을 계산하시오. 단, 수당을 모를 경우 0으로 간주함 (non-equi-join, NVL 이용)
+
+
+SELECT e.ename, e.sal, NVL(e.comm, 0) "수당", e.sal*12+NVL(e.comm, 0) "연봉"
+
+FROM emp e, salgrade s
+
+WHERE s.grade=3 AND e.sal <= s.hisal
+
+     AND NVL(e.comm, 0) <= 1000;
+ 
+
+4. 모든 사원들의 이름, 입사일, 재직년수(만으로 계산), “퇴사예정일”(재직한지 30년 되는 날)을 구하시오. 단, 입사일은 “OOOO년 OO월 OO일” 과 같이 출력하고, 입사일이 빠른 사원부터 순서대로 출력할 것 (SYSDATE, DATE 타입 관련 함수, 타입 변환, 버림 함수 이용)
+
+SELECT ename,
+
+     TO_CHAR(hiredate, 'YYYY"년" MM"월" DD"일"') "입사일",
+
+     TRUNC(MONTHS_BETWEEN(SYSDATE, hiredate)/12, 0) "재직년수",  
+
+     ADD_MONTHS(hiredate, 12*30) "퇴사예정일"
+
+FROM emp
+
+ORDER BY hiredate;
+
+주의: 1년=365일로 가정하고 산술연산을 할 경우 결과가 부정확할 수 있음
+
+     TRUNC((SYSDATE - hiredate)/365, 0) "재직년수",
+
+     hiredate + 365*30, "퇴사예정일"
+ 
+
+5. 각 사원의 이름, 급여, “공제액”을 출력하되 급여가 가장 많은 사원부터 순서대로 출력하시오. 단, 공제액은 급여가 1000미만인 경우 급여의 1%, 급여가 1000이상 2000미만인 경우 1.5%, 급여가 2000이상인 경우는 2%에 해당하는 금액으로 계산함 (CASE WHEN, 정렬 이용)
+
+SELECT ename, sal,
+
+     (CASE WHEN sal<1000 THEN sal*0.01 
+
+               WHEN sal<2000 THEN sal*0.015
+
+               ELSE sal*0.02 END) "공제액"
+
+FROM emp
+
+ORDER BY sal DESC; 
+ 
+
+6. 모든 부서의 이름과 사원 수를 각각 출력하시오. (GROUP BY절, 집계 함수, outer-join 이용)
+
+ 
+
+7. 각 부서에서 같은 업무를 수행하는 사원들을 분류하여 부서번호, 업무명, 인원수, 평균 급여를 출력하시오. (GROUP BY절, 집계 함수 이용)
+
+ 
+
+8. 사원이 2명 이상 있는 부서들에 대해 부서명과 평균 급여를 각각 구하시오.
+
+(a) HAVING절 이용
+
+  (b) derived relation(FROM절에 subquery 작성) 이용
+
+ 
+
+9. 각 사원에 대해 본인이 관리하는 사원들의 이름을 구하시오. (self-join, LISTAGG 이용)
+(관리하는 --> 동료 사원)
+
+(a) 동료 사원의 이름 쌍을 각각 행으로 출력  (예: a, b / a, c / a, d )
+
+(b) 각 사원에 대해 모든 동료 사원들의 이름을 하나의 행으로 출력  (예: a, “b, c, d”)
+
+ 
+
+------------------------------------------------------------------------------------------------------------

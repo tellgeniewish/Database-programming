@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week14\TransactionDBCPExamples.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week13\UserMan3b_withErrors.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week13\DebuggingExamples.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week13\Lab5-MyBatis.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week11\MyBatisExamples.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week10\StudentServices.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week10\lab4-DAO.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week09\lab3-JDBC.zip"/>
+			<item value="C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\week03\WebExamples.zip"/>
+		</list>
+	</section>
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\user\git\UserMan3"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+</section>

@@ -1,0 +1,17 @@
+<!DOCTYPE Context>
+<Context>
+	<!-- Data Source for dbcp3.EmpDAO -->
+	<Resource name="jdbc/TestDB"
+		auth="Container"
+		type="javax.sql.DataSource"
+		driverClassName="oracle.jdbc.driver.OracleDriver"
+		url="jdbc:oracle:thin:@dblab.dongduk.ac.kr:1521/orclpdb"
+		username="scott"
+		password="TIGER"
+		maxTotal="10"
+		initialSize="10"
+		minIdle="5"
+		maxIdle="10"		
+		maxWaitMillis="-1"
+		/>
+</Context>

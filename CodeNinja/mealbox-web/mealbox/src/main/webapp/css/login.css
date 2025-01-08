@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/*login.html에 적용되는 css파일*/
+/***초기화***/
+*{
+    padding: 0px;
+    margin: 0px;
+}
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+@supports (font-variation-settings: normal) {
+   :root {
+     font-family: InterVariable, sans-serif;
+   }
+}
+body{
+    width: 100%;
+}
+/***컨테이너 부분***/
+#container{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 55px);
+}
+/***헤더 부분***/
+header{
+    width: 990px;
+    height: 85px;
+    /*border: 1px solid black;*/
+}
+#login_title{
+    width: 187px;
+    height: 76px;
+    margin: 0 auto;
+    line-height: 76px;
+    /*border: 1px solid pink;*/
+}
+hr{
+    margin-top: 17px;
+    border: 1px solid black;
+}
+/***메인 부분***/
+main{
+    width: 500px;
+    height: auto;
+    transform: translate(250px);
+    /*border: 1px solid black;*/
+}
+#id, #password{
+    width: 480px;
+    height: 40px;
+    margin: 100px 0px 60px 0px;
+    padding: 5px 5px 5px 15px;
+    font-size: 18px;
+    color: #BFB6B9;
+    border-radius: 9px;
+    border: 1px solid black;
+}
+#id{
+    margin-bottom: 10px;
+}
+#password{
+    margin-top: 10px;
+}
+/***버튼 부분***/
+.login_buttons{
+    width: 500px;
+    height: auto;
+    transform: translate(250px);
+    text-align: center;
+    /*border:1px solid orange;*/
+}
+#button_login, #button_join{
+    display: block;
+    width: 500px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 9px;
+    border: none;
+}
+#button_login{
+    margin-bottom: 20px;
+    background-color: #BFB6A9;
+    color: white;
+}
+#button_join{
+    margin-top: 20px;
+    background-color: white;
+    border: 3px solid #BFB6A9;
+}

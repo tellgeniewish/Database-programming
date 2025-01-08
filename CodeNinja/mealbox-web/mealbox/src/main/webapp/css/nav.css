@@ -1,0 +1,196 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  pointer-events: auto;
+}
+
+nav {
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #bfb6a9;
+  padding: 16px 20px;
+  font-size: 20px;
+  }
+  
+#leftSide {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	
+	a {
+		display: block;
+	}
+	 
+	img {
+		width: 45px;
+	}
+}
+
+#navInNav,
+#search,
+#basket,
+#join,
+#login {
+  display: inline-block;
+}
+
+#menuOpen {
+  width: 30px;
+  height: 25px;
+  border: 0px;
+  margin-bottom: 3px;
+  background-image: url("/mealbox/images/menu.png");
+  background-color: rgba(1, 1, 1, 0);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#navContainer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1% 8px 0 2%;
+	box-sizing: border-box;
+}
+
+#navInNav {
+	display: flex;
+	align-items: center;
+  border: none;
+}
+
+#search,
+#basket,
+#join,
+#login {
+  margin-right: 20px;
+}
+
+#search {
+  border: 1px solid black;
+  padding: 2px 8px;
+}
+
+#search_text {
+  width: 250px;
+  height: 40px;
+  border: none;
+  outline: none;
+}
+
+#search_icon {
+  width: 25px;
+  height: 25px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#basket {
+	margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+#basket_icon {
+  width: 30px;
+  height: 30px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#btn_basket{
+  all: unset;
+  background-color: transparent;
+  border: none;
+}
+
+.navButton {
+  width: 90px;
+  height: auto;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#sidebar {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 23%;
+  height: 100%;
+  background-color: white;
+  border-right: 1px solid #bfb6a9;
+  padding: 1%;
+
+  section {
+    font-size: 24px;
+    border-bottom: 1px solid #bfb6a9;
+  }
+  
+  a{
+  	color: black;
+	text-decoration: none;
+  }
+}
+
+.closeSection {
+  height: 16%;
+  text-align: right;
+
+  img {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.selection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8% 3%;
+  
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#peopleSelectionOpen {
+  width: 24px;
+  height: 13px;
+  border: 0px;
+  background-color: rgba(1, 1, 1, 0);
+  background-image: url("../images/open.png");
+  background-size: contain;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+#peopleSelection {
+  display: none;
+  padding: 3% 3% 15% 3%;
+  background-color: #fef4e2;
+
+  div {
+    padding: 5px 0;
+    
+    &:hover {
+    	cursor: pointer;
+    }
+  }
+}

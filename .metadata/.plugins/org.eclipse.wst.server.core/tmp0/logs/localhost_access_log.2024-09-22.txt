@@ -1,0 +1,7 @@
+127.0.0.1 - - [22/Sep/2024:06:16:37 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:16:38 +0900] "GET /WebExamples/ HTTP/1.1" 200 1823
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:16:39 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:16:50 +0900] "GET /WebExamples/JSPExamples/jspTest10.htm HTTP/1.1" 200 385
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:17:00 +0900] "GET /WebExamples/JSPExamples/jspTest10.jsp?direction=home HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:17:17 +0900] "GET /WebExamples/JSPExamples/jspTest10.jsp?direction=jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [22/Sep/2024:06:17:18 +0900] "GET /WebExamples/JSPExamples/jspTest11.jsp HTTP/1.1" 200 303

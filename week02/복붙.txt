@@ -1,0 +1,115 @@
+-- 실습1
+-- 1
+set echo on
+SELECT ename, deptno, job
+FROM emp
+WHERE (deptno=30 OR deptno=20) AND ename LIKE '%AR%';
+
+-- 2
+-- (a)
+set echo on
+SELECT COUNT(e.empno)
+FROM emp e JOIN dept d ON e.deptno = d.deptno
+WHERE d.dname = 'RESEARCH' AND e.sal <= 2000;
+-- 또는
+set echo on
+SELECT COUNT(e.empno)
+FROM emp e, dept d 
+WHERE e.deptno = d.deptno
+     AND d.dname = 'RESEARCH' AND e.sal <= 2000;
+-- (b)
+set echo on
+SELECT COUNT(empno)
+FROM emp
+WHERE sal <= 2000
+     AND deptno IN (SELECT deptno FROM dept WHERE dname = 'RESEARCH');
+     
+-- 3
+set echo on
+SELECT e.ename, e.sal, NVL(e.comm, 0) "수당", e.sal*12+NVL(e.comm, 0) "연봉"
+FROM emp e, salgrade s
+WHERE s.grade=3 AND e.sal <= s.hisal
+     AND NVL(e.comm, 0) <= 1000;
+     
+-- 4
+set echo on
+SELECT ename,
+     TO_CHAR(hiredate, 'YYYY"년" MM"월" DD"일"') "입사일",
+     TRUNC(MONTHS_BETWEEN(SYSDATE, hiredate)/12, 0) "재직년수",  
+     ADD_MONTHS(hiredate, 12*30) "퇴사예정일"
+FROM emp
+ORDER BY hiredate;
+
+-- 5
+set echo on
+SELECT ename, sal,
+     (CASE WHEN sal<1000 THEN sal*0.01 
+               WHEN sal<2000 THEN sal*0.015
+               ELSE sal*0.02 END) "공제액"
+FROM emp
+ORDER BY sal DESC;
+
+-- 6
+set echo on
+SELECT d.dname, COUNT(e.empno) AS 사원수
+FROM dept d
+LEFT OUTER JOIN emp e ON d.deptno = e.deptno
+GROUP BY d.dname;
+
+-- 7
+set echo on
+SELECT deptno, job, COUNT(empno) AS 인원수, AVG(sal) AS 평균급여
+FROM emp
+GROUP BY deptno, job;
+
+-- 8
+-- (a)
+set echo on
+SELECT d.dname, AVG(e.sal) AS 평균급여
+FROM dept d
+JOIN emp e ON d.deptno = e.deptno
+GROUP BY d.dname
+HAVING COUNT(e.empno) >= 2;
+--(b)
+set echo on
+SELECT dname, 평균급여
+FROM (
+    SELECT d.dname, AVG(e.sal) AS 평균급여, COUNT(e.empno) AS 사원수
+    FROM dept d JOIN emp e ON d.deptno = e.deptno
+    GROUP BY d.dname
+) 
+WHERE 사원수 >= 2;
+
+
+-- 9
+-- (a)
+set echo on
+SELECT e1.ename AS 관리자, e2.ename AS 동료
+FROM emp e1
+JOIN emp e2 ON e1.empno = e2.mgr
+ORDER BY e1.ename, e2.ename;
+--(b)
+set echo on
+SELECT e1.ename AS 관리자, LISTAGG(e2.ename, ', ') WITHIN GROUP (ORDER BY e2.ename) AS 동료목록
+FROM emp e1
+JOIN emp e2 ON e1.empno = e2.mgr
+GROUP BY e1.ename
+ORDER BY e1.ename;
+
+-- 실습2
+-- 1
+set echo on
+create table dept11689 as select * from dept;
+create table emp11689 as
+    select * from emp
+    where emp.deptno IN (select deptno from dept
+                        where dname = 'RESEARCH');
+DROP TABLE dept11689;
+DROP TABLE emp11689;
+set echo on
+create table dept11689 as select * from dept;
+create table emp11689 as
+    select * from emp
+    where emp.deptno IN (select deptno from dept
+                        where dname = 'RESEARCH');
+   

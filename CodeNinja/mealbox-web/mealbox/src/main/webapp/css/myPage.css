@@ -1,0 +1,52 @@
+/*
+기능: myPage css
+작성자: 장고은
+마지막 수정일: 2024-11-04
+ */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+#container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height:100vh;
+	width:1295px;
+	padding-top:52px;
+}
+
+#title{
+	font-size: 36px;
+	margin-bottom: 20px;
+}
+
+#line{
+	width:1295px;
+}
+
+#btnContainer {
+  width: 502px;
+  height: 500px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+#btnContainer  button{
+  width: 502px;
+  height: 90px;
+  margin: 25px 0;
+  background-color: #bfb6a9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+}

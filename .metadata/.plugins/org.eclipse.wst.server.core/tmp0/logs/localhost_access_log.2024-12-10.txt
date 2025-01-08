@@ -1,0 +1,14 @@
+127.0.0.1 - - [10/Dec/2024:06:42:40 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:42:48 +0900] "GET /UserMan3b_withErrors/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:42:48 +0900] "GET /UserMan3b_withErrors/user/list HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:42:51 +0900] "GET /UserMan3b_withErrors/user/login/form HTTP/1.1" 200 1916
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:42:56 +0900] "GET /UserMan3b_withErrors/images/logo.gif HTTP/1.1" 200 6534
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:42:57 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:45:07 +0900] "GET /UserMan3b_withErrors/ HTTP/1.1" 302 -
+127.0.0.1 - - [10/Dec/2024:06:49:36 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:49:38 +0900] "GET /UserMan3b_withErrors/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:06:52:54 +0900] "GET /UserMan3b_withErrors/user/list HTTP/1.1" 500 4017
+127.0.0.1 - - [10/Dec/2024:07:32:09 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:07:32:10 +0900] "GET /TransactionDBCPExamples/WEB-INF/classes/transaction/TransactionTest.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:08:26:20 +0900] "GET /TransactionDBCPExamples/ HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [10/Dec/2024:08:26:25 +0900] "GET /TransactionDBCPExamples/dbcpTest3 HTTP/1.1" 200 827

@@ -1,0 +1,120 @@
+:root {
+  font-family: Inter, sans-serif;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: InterVariable, sans-serif;
+  }
+}
+
+body {
+  width: 100%;
+}
+
+#adminContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+
+#selectedActionContainer {
+  width: 90%;
+  padding: 0px 20px;
+  border: 20px 0px;
+  text-align: right;
+
+  input {
+    background-color: white;
+    margin: 0px 8px;
+    padding: 2px 20px;
+    border: 1px solid black;
+    border-radius: 4px;
+  }
+}
+
+.submitButton {
+	&:hover {
+		cursor: pointer;
+	}
+	
+	&:active {
+		background-color: red;
+	}
+}
+
+#hr {
+  width: 95%;
+  border-bottom: 1px solid black;
+  padding: 6px;
+}
+
+#formContainer {
+  width: 95%;
+  margin: 14px 0 32px 0;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
+
+#labelContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 16px;
+
+  span {
+    width: 11%;
+    padding: 28px 0;
+    text-align: center;
+    border-left: 1px solid black;
+  }
+  
+  
+  span:first-child, span:nth-child(2), span:nth-child(8), span:nth-child(9) {
+	  width: 7%;
+  }
+}
+
+#formWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+
+  div {
+    height: 100%;
+    width: 11%;
+    padding: 20px 0;
+    text-align: center;
+    border-left: 1px solid black;
+
+    input,
+    textarea,
+    select,
+    option {
+      width: 88%;
+      font-size: 14px;
+    }
+  }
+  
+  div:first-child, div:nth-child(2), div:nth-child(8), div:nth-child(9)  {
+	  width: 7%;
+	  
+	  input {
+		  border: 0px;
+		  text-align: center;
+	  }
+  }
+  
+  div:nth-child(4) {
+	  height: 100%;
+	  padding: 4px 0;
+	  
+	  textarea {
+		  height: 100%;
+	  }
+  }
+}

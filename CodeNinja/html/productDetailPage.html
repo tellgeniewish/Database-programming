@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <!-- <script src="../js/includeHTML.js"></script>
+        <script src="../js/sidebar.js"></script> -->
+        <script src="../../mealbox-web/js/includeHTML.js"></script>
+        <script src="../../mealbox-web/js/sidebar.js"></script>
+
+        <title>상품 상세 페이지</title>
+        <link rel="stylesheet" href="../css/productDetailPage.css">
+
+        <link rel="preconnect" href="https://rsms.me/" />
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    </head>
+    <body>
+        <div>    
+            <!-- <nav include-html="nav.html"></nav> -->
+            <nav include-html="../../mealbox-web/html/nav.html"></nav>
+            <script>
+              includeHTML();
+            </script>
+        </div>
+        <div class="container meal">            
+            <div class="meal_img">
+                <img id="product_image" src="" alt="">
+            </div>
+            <div class="details_container">
+                <h3 id="product_name"></h3>
+                <div class="rating">
+                    <span id="display_rating_stars"></span> |
+                    <span id="product_rating_score"></span>
+                </div>
+                <p class="price" id="product_price"></p>
+                <div class="quantity">
+                    <div id="product_description"></div>
+                    <hr>
+                    <div class="check_quantity">
+                        <div class="plusOrMinus">
+                            <button class="decrease">-</button>
+                            <input type="number" id="quantity" value="1" min="1" readonly>
+                            <button class="increase">+</button>
+                        </div>
+                        <span id="how_much"></span>
+                    </div>
+                </div>
+                <p class="total_price">
+                    <sup class="maybe_price">구매 예정 금액</sup>
+                    <span id="total_price"></span>
+                </p>
+                <div class="buy_yet">
+                    <button class="add_cart">장바구니</button>
+                    <button class="buy_now">바로구매</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <iframe src="../../reviewPage/html/reviewPage.html" class="review-frame" title="리뷰"></iframe>
+        <script src="../js/productDetailPage.js"></script>
+    </body>
+</html>

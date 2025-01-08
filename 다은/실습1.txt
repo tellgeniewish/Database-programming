@@ -1,0 +1,73 @@
+SQL> CREATE TABLE EMP0813
+
+  2  AS SELECT empno, ename, dname, sal, comm, mgr, hiredate
+
+  3  FROM emp e JOIN dept d ON e.deptno = d.deptno
+
+  4  WHERE dname = 'RESEARCH';
+
+ 
+
+Table EMP0813이(가) 생성되었습니다.
+
+ 
+
+SQL> 
+
+SQL> INSERT INTO EMP0813(empno, ename, dname, sal, hiredate)
+
+  2  VALUES (7999, 'JULIE', 'RESEARCH', 1000, SYSDATE);
+
+ 
+
+1 행 이(가) 삽입되었습니다.
+
+ 
+
+SQL> 
+
+SQL> INSERT INTO EMP0813
+
+  2  SELECT empno, ename, dname, sal, comm, mgr, hiredate
+
+  3  FROM emp e JOIN dept d ON e.deptno = d.deptno
+
+  4  WHERE d.deptno = '30';
+
+ 
+
+6개 행 이(가) 삽입되었습니다.
+
+ 
+
+SQL> 
+
+SQL> UPDATE EMP0813
+
+  2  SET comm = sal * 0.05
+
+  3  WHERE comm = '';
+
+ 
+
+0개 행 이(가) 업데이트되었습니다.
+
+ 
+
+SQL> 
+
+SQL> UPDATE EMP0813
+
+  2  SET (mgr) = (SELECT mgr
+
+  3              FROM emp
+
+  4              WHERE ename = 'FORD')
+
+  5  WHERE ename = 'JULIE';
+
+ 
+
+ALTER TABLE EMP0813
+
+  2  ADD (work_anniv CHAR(10));

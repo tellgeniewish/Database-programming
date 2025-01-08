@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repository.mybatis.mapper.CommentMapper1">
+	<cache />
+
+	<sql id="BaseColumns">
+		comment_no AS commentNo,
+		user_id AS userId,
+		comment_content AS commentContent,
+		reg_date AS regDate
+	</sql>
+
+	<select id="selectCommentByPrimaryKey" parameterType="long" resultType="Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		WHERE comment_no = #{commentNo}
+	</select>
+ 
+	<select id="selectCommentByCondition" parameterType="hashmap" resultType="Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		<where>
+			<if test="commentNo != null">
+				comment_no = #{commentNo}
+			</if>
+			<if test="userId != null">
+				AND user_id = #{userId}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertComment" parameterType="Comment">
+		INSERT INTO COMMENTS (comment_no, user_id, comment_content, reg_date)
+		VALUES (#{commentNo}, #{userId}, #{commentContent}, #{regDate})
+	</insert>
+
+	<update id="updateComment" parameterType="Comment">
+		UPDATE COMMENTS 
+		SET comment_content = #{commentContent}
+		WHERE comment_no = #{commentNo}
+	</update>
+ 
+	<delete id="deleteComment" parameterType="long">
+		DELETE FROM COMMENTS
+		WHERE comment_no = #{commentNo}
+	</delete>
+	
+	<delete id="deleteAllComments">
+		DELETE FROM COMMENTS
+	</delete>
+	
+	
+	<resultMap id="associationResultMap" type="Comment">
+		<id column="comment_no" jdbcType="NUMERIC" property="commentNo" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
+		<association column="user_id" property="user" javaType="User">
+			<id column="user_id" property="userId" />
+			<result column="user_name" property="userName" />
+			<result column="phone" property="phone" />
+			<result column="address" property="address" />
+		</association>
+	</resultMap>
+
+	<select id="selectCommentByPrimaryKeyAssociation" parameterType="long" 		
+		resultMap="associationResultMap"> 
+		SELECT c.comment_no, 
+				c.user_id, 
+				c.comment_content, 
+				c.reg_date, 
+				u.user_name, 
+				u.phone, 
+				u.address
+		FROM COMMENTS c, USERS u			
+		WHERE c.user_id = u.user_id  
+		  AND c.comment_no = #{commentNo} 
+	</select>
+	
+	<select id="selectCommentByPrimaryKeyAssociation2" parameterType="long" 		
+		resultType="Comment"> 
+		SELECT c.comment_no AS commentNo,
+			   c.user_id AS userId,
+			   c.comment_content AS commentContent,
+			   c.reg_date AS regDate,
+			   u.user_id AS "user.userId",	
+			   u.user_name AS "user.userName", 			   
+			   u.phone AS "user.phone",	
+			   u.address AS "user.address"	
+		FROM COMMENTS c, USERS u			
+		WHERE c.user_id = u.user_id  
+		  AND c.comment_no = #{commentNo} 
+	</select>
+	
+	
+	<resultMap id="collectionResultMap" type="Comment">
+		<id column="comment_no" jdbcType="BIGINT" property="commentNo" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="comment_content" jdbcType="VARCHAR" property="commentContent" />
+		<result column="reg_date" jdbcType="TIMESTAMP" property="regDate" />
+		<collection property="replies" ofType="Reply">
+			<id column="reply_id" property="replyId" />
+			<result column="reply_user_id" property="userId" />
+			<result column="reply_content" property="replyContent" />
+			<result column="reply_date" property="regDate" />
+		</collection>
+	</resultMap>
+	
+	<select id="selectCommentByPrimaryKeyCollection" parameterType="long" 			
+		resultMap="collectionResultMap"> 
+		SELECT c.comment_no, 
+				c.user_id, 
+				c.comment_content, 
+				c.reg_date, 
+				r.reply_id, 
+				r.user_id AS reply_user_id, 
+				r.reply_content, 
+				r.reg_date AS reply_date
+		FROM COMMENTS c, REPLY r
+		WHERE c.comment_no = r.comment_no 
+		  AND c.comment_no = #{commentNo} 
+	</select>
+	
+	<insert id="insertReply" parameterType="Reply">
+		INSERT INTO REPLY (reply_id, comment_no, user_id, reply_content, reg_date)
+		VALUES (#{replyId}, #{commentNo}, #{userId}, #{replyContent}, #{regDate})
+	</insert>
+
+	<delete id="deleteAllReplies">
+		DELETE FROM REPLY
+	</delete>
+
+</mapper>

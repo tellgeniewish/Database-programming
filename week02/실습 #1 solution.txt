@@ -1,0 +1,185 @@
+1.
+
+SELECT ename, deptno, job
+
+FROM emp
+
+WHERE (deptno=30 OR deptno=20) AND ename LIKE '%AR%';
+
+ 
+
+2.
+
+(a)
+
+SELECT COUNT(e.empno)
+
+FROM emp e JOIN dept d ON e.deptno = d.deptno
+
+WHERE d.dname = 'RESEARCH' AND e.sal <= 2000;
+
+또는
+
+SELECT COUNT(e.empno)
+
+FROM emp e, dept d 
+
+WHERE e.deptno = d.deptno
+
+     AND d.dname = 'RESEARCH' AND e.sal <= 2000;
+
+ 
+
+(b)
+
+SELECT COUNT(empno)
+
+FROM emp
+
+WHERE sal <= 2000
+
+     AND deptno IN (SELECT deptno FROM dept WHERE dname = 'RESEARCH');
+
+ 
+
+3.
+
+SELECT e.ename, e.sal, NVL(e.comm, 0) "수당", e.sal*12+NVL(e.comm, 0) "연봉"
+
+FROM emp e, salgrade s
+
+WHERE s.grade=3 AND e.sal <= s.hisal
+
+     AND NVL(e.comm, 0) <= 1000;
+
+  
+
+4.
+
+SELECT ename,
+
+     TO_CHAR(hiredate, 'YYYY"년" MM"월" DD"일"') "입사일",
+
+     TRUNC(MONTHS_BETWEEN(SYSDATE, hiredate)/12, 0) "재직년수",  
+
+     ADD_MONTHS(hiredate, 12*30) "퇴사예정일"
+
+FROM emp
+
+ORDER BY hiredate;
+
+ 
+
+주의: 1년=365일로 가정하고 산술연산을 할 경우 결과가 부정확할 수 있음
+
+     TRUNC((SYSDATE - hiredate)/365, 0) "재직년수",
+
+     hiredate + 365*30, "퇴사예정일"
+
+  
+
+5.
+
+SELECT ename, sal,
+
+     (CASE WHEN sal<1000 THEN sal*0.01 
+
+               WHEN sal<2000 THEN sal*0.015
+
+               ELSE sal*0.02 END) "공제액"
+
+FROM emp
+
+ORDER BY sal DESC; 
+
+ 
+
+6.
+
+SELECT dname, COUNT(empno) "사원수"
+
+FROM dept LEFT OUTER JOIN emp ON dept.deptno=emp.deptno
+
+GROUP BY dname;
+
+  
+
+7.
+
+SELECT deptno, job, COUNT(empno) "인원수", AVG(sal) "평균급여"
+
+FROM emp
+
+GROUP BY deptno, job
+
+ORDER BY deptno, job;
+
+   
+
+8.
+
+(a)
+
+SELECT dname, AVG(sal)
+
+FROM emp JOIN dept USING (deptno)
+
+GROUP BY dname
+
+HAVING COUNT(empno) >= 2;
+
+  
+
+(b)
+
+SELECT dname, avgSal
+
+FROM (SELECT dname, COUNT(empno) numOfEmps, AVG(sal) avgSal
+
+           FROM emp JOIN dept USING (deptno)
+
+           GROUP BY dname)
+
+WHERE numOfEmps >= 2;
+
+또는
+
+SELECT dname, avgSal
+
+FROM (SELECT deptno, COUNT(empno) numOfEmps, AVG(sal) avgSal
+
+           FROM emp
+
+           GROUP BY deptno) JOIN dept USING (deptno)
+
+WHERE numOfEmps >= 2;
+
+  
+
+9.
+
+(a)
+
+SELECT e.ename, f.ename “동료사원”
+
+FROM emp e JOIN emp f ON e.deptno = f.deptno
+
+WHERE e.empno != f.empno
+
+ORDER BY e.ename, f.ename;
+
+     
+
+(b)
+
+SELECT e.ename,
+
+     LISTAGG(f.ename, ‘, ‘) WITHIN GROUP (ORDER BY f.ename) “동료사원”
+
+FROM emp e JOIN emp f ON e.deptno = f.deptno
+
+WHERE e.empno != f.empno
+
+GROUP BY e.ename
+
+ORDER BY e.ename;

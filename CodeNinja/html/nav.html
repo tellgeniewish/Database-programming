@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../css/nav.css" />
+
+    <title>nav</title>
+  </head>
+  <body>
+    <!--네비 부분-->
+    <!--메뉴아이콘-->
+    <input type="button" id="menuOpen" />
+
+    <!--검색, 장바구니, join, login-->
+    <div id="navInNav">
+      <!--검색-->
+      <div id="search">
+        <input type="text" id="search_text" placeholder="검색어" />
+        <img id="search_icon" src="../images/search.png" align="center" /><!--검색아이콘-->
+      </div>
+      <!--장바구니-->
+      <div id="basket"><img id="basket_icon" src="../images/basket.png" align="center" /><!--장바구니아이콘--></div>
+      <!--join-->
+      <div id="join">JOIN</div>
+      <!--login-->
+      <div id="login">LOGIN</div>
+    </div>
+
+    <!--사이드 바 구현-->
+    <aside id="sidebar">
+      <section class="closeSection">
+        <img id="menuClose" src="../images/sidebar_close.png" />
+      </section>
+
+      <section class="selection">한식</section>
+      <section class="selection">양식</section>
+      <section class="selection">분식</section>
+      <section class="selection">중식</section>
+      <section class="selection">
+        인원별
+        <input type="button" id="peopleSelectionOpen" />
+      </section>
+      <section id="peopleSelection">
+        <div id="smallerSelection">1~2인분</div>
+        <div id="biggerSelection">3~4인분</div>
+      </section>
+    </aside>
+  </body>
+</html>

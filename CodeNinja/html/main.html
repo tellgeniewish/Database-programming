@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <link rel="stylesheet" type="text/css" href="../css/card.css" />
+
+    <script src="../js/includeHTML.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <title>메인</title>
+  </head>
+  <body>
+    <nav include-html="nav.html"></nav>
+    <script>
+      includeHTML();
+    </script>
+
+    <div id="mainContainer">
+      <ul id="orderContainer">
+        <li>최신등록순</li>
+        <li>낮은가격순</li>
+        <li>높은가격순</li>
+        <li>평점높은순</li>
+      </ul>
+      <div class="cardContainer"></div>
+      <script src="../js/card.js"></script>
+    </div>
+  </body>
+</html>

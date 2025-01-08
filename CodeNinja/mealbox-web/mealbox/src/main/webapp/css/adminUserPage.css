@@ -1,0 +1,88 @@
+/*join.html에 적용되는 css파일*/
+/***초기화***/
+*{
+	padding: 0px;
+	margin: 0px;
+}
+:root {
+    font-family: Inter, sans-serif;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+@supports (font-variation-settings: normal) {
+   :root {
+     font-family: InterVariable, sans-serif;
+   }
+}
+body{
+    width: 100%;
+    /*background-color: antiquewhite;*/
+}
+/***컨테이너 부분***/
+#container{
+    width: 95%;
+    height: auto;
+    position:absolute;
+    left: 50%;
+    transform: translate(-50%, 50px);
+    /*background-color: yellow;*/
+}
+/***헤더 부분***/
+header {
+    width: auto;
+    height: 128px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid black;
+}
+header div {
+    width: auto;
+    height: auto;
+    position:relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    text-align: center;
+    padding-bottom: 12px;
+    /*border:1px solid black;*/
+}
+button {
+    width: 102px;
+    height: 25px;
+    font-size: 16px;
+    position: relative;
+    left: 100%;
+    transform:translate(-100%, 30px);
+    background-color: white;
+    border-radius: 5px;
+}
+/***메인 부분***/
+main {
+    width: auto;
+    height: auto;
+    /*border: 1px solid black;*/
+}
+table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+th, td {
+    border: 1px solid black;
+    /*width: 10%;*/
+    height: 120px;
+    font-size: 24px;
+}
+table th:nth-child(1) {
+    width: 5%;
+}
+table th:nth-child(2), th:nth-child(3), th:nth-child(4), th:nth-child(5), th:nth-child(9), th:nth-child(10) {
+    width: 7%;
+}
+table input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    background: #D9D9D9;
+}

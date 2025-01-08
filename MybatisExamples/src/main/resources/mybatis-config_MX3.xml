@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="model.Comment" alias="Comment" />
+		<typeAlias type="model.User" alias="User" />
+		<typeAlias type="model.Reply" alias="Reply" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@dblab.dongduk.ac.kr:1521/orclpdb" />
+				<property name="username" value="dbp2024" />
+				<property name="password" value="TIGER" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="repository/mybatis/mapper/CommentMapper3.xml" />
+	</mappers>
+</configuration>

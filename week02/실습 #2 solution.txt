@@ -1,0 +1,119 @@
+--1.
+
+CREATE TABLE dept1234 AS SELECT * FROM dept;
+
+CREATE TABLE emp1234 AS 
+
+    SELECT empno, ename, sal, job comm, hiredate, mgr, e.deptno, dname 
+
+    FROM emp e JOIN dept d ON e.deptno=d.deptno 
+
+    WHERE dname = 'RESEARCH';
+
+SELECT * FROM dept1234;
+
+SELECT * FROM emp1234;
+
+   
+
+--2.
+
+--(a),(b)
+
+ALTER TABLE dept1234 ADD PRIMARY KEY (deptno);
+
+ALTER TABLE emp1234 ADD FOREIGN KEY (deptno) REFERENCES dept1234
+
+    ON DELETE SET NULL;
+
+--(c)
+
+ALTER TABLE emp1234 ADD CHECK(sal >= 700);
+
+--(d)
+
+CREATE SEQUENCE emp1234_empno_seq
+
+    START WITH 9000 INCREMENT BY 10 MAXVALUE 9990;
+
+ 
+
+--3.
+
+INSERT INTO emp1234 (empno, ename, hiredate, job, deptno)
+
+    VALUES (emp1234_empno_seq.nextval, 'Jain', SYSDATE, 'CLERK', 20);
+
+UPDATE emp1234
+
+SET sal = (SELECT MIN(sal)
+
+             FROM emp1234
+
+             WHERE deptno = 20),
+
+     mgr = (SELECT mgr 
+
+              FROM emp1234
+
+              WHERE ename = 'SCOTT')
+
+WHERE ename = 'Jain';
+
+SELECT * FROM emp1234;
+
+ 
+
+--4.
+
+INSERT INTO emp1234 (empno, ename, hiredate, sal, deptno)
+
+    VALUES (emp1234_empno_seq.nextval, 'Romeo', SYSDATE, 700, 20);
+
+INSERT INTO emp1234 (empno, ename, hiredate, sal, deptno)
+
+    VALUES (emp1234_empno_seq.nextval, 'Juliet', SYSDATE, 700, 20);
+
+SELECT * from emp1234;
+
+ 
+
+--5.
+
+SELECT * from emp1234;
+
+DELETE FROM dept1234 WHERE dname='RESEARCH';
+
+SELECT * from emp1234;
+
+ 
+
+--6.
+
+ALTER TABLE emp1234 ADD (dname VARCHAR2(14));
+
+INSERT INTO emp1234 
+
+    SELECT empno, ename, job, mgr, hiredate, sal, comm, e.deptno, dname 
+
+    FROM emp e JOIN dept d ON e.deptno=d.deptno 
+
+    WHERE dname != 'RESEARCH';
+
+SELECT * from emp1234;
+
+  
+
+--7.
+
+SELECT ROWNUM, empno, ename, TRUNC(period, 0)
+
+FROM  (SELECT empno, ename, SYSDATE - hiredate AS period
+
+          FROM emp1234
+
+          WHERE dname = 'SALES'
+
+          ORDER BY period)
+
+WHERE ROWNUM <= 3;

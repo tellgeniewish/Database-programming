@@ -1,0 +1,121 @@
+/*
+기능: 장바구니 페이지 css
+작성자: 장고은
+마지막 수정일: 2024-09-29
+추가해야할 기능: 네비바, 페이지 이동
+*/
+/* 기본 스타일 설정 */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* 네비게이션 바 */
+#nav {
+  width: 100vw;
+  height: 52px;
+  background-color: yellow;
+}
+
+/* 장바구니 아이템 목록 */
+#itemList {
+  background-color: #f2f2f2;
+  width: 502px;
+  overflow: auto; /* 혹은 visible */
+  max-height: none; /* 높이를 제한하지 않음 */
+
+  padding: 20px;
+  margin-top: 30px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#itemList > p {
+  text-align: left;
+}
+
+/* 개별 상품 아이템 */
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  width: 464px;
+  height: 106px;
+  margin: 20px 0;
+  padding: 0px 10px;
+  border-radius: 10px;
+}
+
+/* 닫기 버튼 (X) 스타일 */
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #cc0000;
+}
+
+/* 상품 이미지 */
+.itemInfo1 img {
+  width: 63px;
+  height: 89px;
+}
+
+/* 상품 정보 */
+.itemInfo2 {
+  width: 250px;
+  text-align: left;
+}
+
+/* 총 가격과 닫기 버튼 */
+.itemInfo3 {
+  text-align: right;
+}
+
+.itemInfo3 p {
+  padding-top: 10px;
+}
+
+/* 총 결제 금액 */
+#totalMoney {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 502px;
+  height: 98px;
+  padding: 0 20px;
+  margin-top: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+#money {
+  font-size: 30px;
+}
+
+/* 구매하기 버튼 */
+#btn button {
+  width: 542px;
+  height: 52px;
+  background-color: #bfb6a9;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+#btn button:hover {
+  background-color: #a89580;
+}

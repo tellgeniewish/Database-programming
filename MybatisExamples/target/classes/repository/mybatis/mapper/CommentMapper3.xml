@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repository.mybatis.mapper.CommentMapper3">
+	<cache />
+
+	<sql id="BaseColumns">
+		comment_no AS commentNo,
+		user_id AS userId,
+		comment_content AS commentContent,
+		reg_date AS regDate
+	</sql>
+
+	<select id="selectCommentByPrimaryKey" parameterType="long" resultType="Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		WHERE comment_no = #{commentNo}
+	</select>
+ 
+	<select id="selectCommentByCondition" parameterType="hashmap" resultType="Comment">
+		SELECT <include refid="BaseColumns"/>
+		FROM COMMENTS
+		<where>
+			<if test="commentNo != null">
+				comment_no = #{commentNo}
+			</if>
+			<if test="userId != null">
+				AND user_id = #{userId}
+			</if>
+		</where>
+	</select>
+
+	<insert id="insertComment" parameterType="Comment">
+		INSERT INTO COMMENTS (comment_no, user_id, comment_content, reg_date)
+		VALUES (#{commentNo}, #{userId}, #{commentContent}, #{regDate})
+	</insert>
+
+	<update id="updateComment" parameterType="Comment">
+		UPDATE COMMENTS 
+		SET comment_content = #{commentContent}
+		WHERE comment_no = #{commentNo}
+	</update>
+ 
+	<delete id="deleteComment" parameterType="long">
+		DELETE FROM COMMENTS
+		WHERE comment_no = #{commentNo}
+	</delete>
+	
+	<delete id="deleteAllComments">
+		DELETE FROM COMMENTS
+	</delete>
+</mapper>

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2946364672.index
+4123223335.index
+2743695396.index
+231193174.index
+3488397882.index
+2986241833.index

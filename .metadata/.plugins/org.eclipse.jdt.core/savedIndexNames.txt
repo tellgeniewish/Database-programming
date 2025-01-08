@@ -1,0 +1,17 @@
+INDEX VERSION 1.131+C:\Users\user\Desktop\J\DDWU\24-2\DataBaseProgramming(DBP)\.metadata\.plugins\org.eclipse.jdt.core
+1836268820.index
+3488397882.index
+311793703.index
+4123223335.index
+1865797976.index
+2873855525.index
+3759499944.index
+1831059149.index
+449574546.index
+2986241833.index
+809708300.index
+1643625310.index
+1256638581.index
+231193174.index
+3487364332.index
+2946364672.index
